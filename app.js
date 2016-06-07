@@ -21,6 +21,9 @@ angular.module('Esthar', []).controller('MainCtrl', [
 
       $scope.title = '';
       $scope.link = '';
+
+      $scope.form.$setPristine();
+      $scope.form.$setUntouched();
     };
 
     $scope.incrementUpvotes = function(post) {
