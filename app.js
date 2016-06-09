@@ -1,14 +1,25 @@
-angular.module('Esthar', []).controller('MainCtrl', [
-  '$scope',
+var Esthar = angular.module('Esthar', []);
 
-  function($scope) {
-    $scope.posts = [
-      {title: 'post 1', upvotes: 5},
-      {title: 'post 2', upvotes: 2},
-      {title: 'post 3', upvotes: 15},
-      {title: 'post 4', upvotes: 9},
-      {title: 'post 5', upvotes: 4}
-    ];
+Esthar.factory('posts', [function() {
+  var object = {
+    posts: [
+      {title: 'Post 1', upvotes: 5},
+      {title: 'Post 2', upvotes: 2},
+      {title: 'Post 3', upvotes: 15},
+      {title: 'Post 4', upvotes: 9},
+      {title: 'Post 5', upvotes: 4}
+    ]
+  };
+
+  return object;
+}]);
+
+Esthar.controller('MainCtrl', [
+  '$scope',
+  'posts',
+
+  function($scope, posts) {
+    $scope.posts = posts.posts;
 
     $scope.addPost = function() {
       if(!$scope.title || $scope.title === '') { return; }
@@ -28,6 +39,6 @@ angular.module('Esthar', []).controller('MainCtrl', [
 
     $scope.incrementUpvotes = function(post) {
       post.upvotes += 1;
-    }
+    };
   }
 ]);
