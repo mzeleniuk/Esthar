@@ -1,4 +1,20 @@
-var Esthar = angular.module('Esthar', []);
+var Esthar = angular.module('Esthar', ['ui.router']);
+
+Esthar.config([
+  '$stateProvider',
+  '$urlRouterProvider',
+
+  function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: '/home.html',
+        controller: 'MainCtrl'
+      });
+
+    $urlRouterProvider.otherwise('home');
+  }
+]);
 
 Esthar.factory('posts', [function() {
   var object = {
