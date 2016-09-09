@@ -83,3 +83,8 @@ production:
   database: Esthar_production
   username: Esthar
   password: <%= ENV['ESTHAR_DATABASE_PASSWORD'] %>
+
+# Put your "local" override configuration in a file called db_local.yml
+# Derived from http://6brand.com/how-to-manage-your-database-yml.html
+<%= file = File.join('config', 'db_local.yml');
+  IO.read(file) if File.exist?(file) %>
