@@ -14,3 +14,6 @@
 
 # Ignore local database configuration
 /config/db_local.yml
+
+# Ignore IDEA directory
+.idea/
