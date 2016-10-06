@@ -1,12 +1,12 @@
 # Customize the test machine
-
 machine:
   ruby:
     version:
       2.3.1
+  environment:
+    CODECLIMATE_REPO_TOKEN: 'c3bd3fe4a235013054b5c1a2b77ba899951483d8f4da03a187a9c6c58fcffa91'
 
 # Customize dependencies
-
 dependencies:
   pre:
-    - gem install bundler --pre
+    - gem install bundler

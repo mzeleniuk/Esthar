@@ -23,6 +23,9 @@ gem 'puma'
 # Code coverage analysis tool for Ruby
 gem 'simplecov', require: false, group: :test
 
+# Show code coverage in Code Climate
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
