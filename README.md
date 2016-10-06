@@ -1,5 +1,7 @@
 # Esthar
 
+[![Code Climate](https://codeclimate.com/github/mzelenyuk/Esthar/badges/gpa.svg)](https://codeclimate.com/github/mzelenyuk/Esthar)
+[![Test Coverage](https://codeclimate.com/github/mzelenyuk/Esthar/badges/coverage.svg)](https://codeclimate.com/github/mzelenyuk/Esthar/coverage)
 [![CircleCI](https://circleci.com/gh/mzelenyuk/Esthar/tree/master.svg?style=svg&circle-token=96d054953f193dab539d5dec55153a88583e634e)](https://circleci.com/gh/mzelenyuk/Esthar/tree/master)
 
 Esthar is a social media, social news aggregation, web content rating and discussion website,
