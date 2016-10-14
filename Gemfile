@@ -20,12 +20,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Puma as the app server
 gem 'puma'
 
-# Code coverage analysis tool for Ruby
-gem 'simplecov', require: false, group: :test
-
-# Show code coverage in Code Climate
-gem 'codeclimate-test-reporter', group: :test, require: nil
-
 # Use Angular templates with Rails' Asset Pipeline
 gem 'angular-rails-templates'
 
@@ -43,4 +37,15 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  # Code coverage analysis tool for Ruby
+  gem 'simplecov', require: false
+
+  # Show code coverage in Code Climate
+  gem 'codeclimate-test-reporter', require: nil
+
+  # Collection of testing matchers extracted from Shoulda
+  gem 'shoulda-matchers', '~> 3.1'
 end
