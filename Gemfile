@@ -29,6 +29,9 @@ group :development, :test do
 
   # Testing framework for Rails
   gem 'rspec-rails', '~> 3.5'
+
+  # Fixtures replacement
+  gem 'factory_girl_rails'
 end
 
 group :development do
