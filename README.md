@@ -28,3 +28,11 @@ Run `bower install` in console.
 ## How to run the test suite
 
 Run `bundle exec rspec` in console.
+
+## How to run the static analysis security vulnerability scanner
+
+Run `brakeman` in console.
+
+## How to run the Ruby static code analyzer
+
+Run `rubocop` in console.

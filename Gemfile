@@ -40,6 +40,12 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # A static analysis security vulnerability scanner for Ruby on Rails applications
+  gem 'brakeman', require: false
+
+  # A Ruby static code analyzer, based on the community Ruby style guide
+  gem 'rubocop', '~> 0.45.0', require: false
 end
 
 group :test do
