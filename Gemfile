@@ -20,6 +20,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Puma as the app server
 gem 'puma'
 
+# A set of responders modules
+gem 'responders', '~> 2.3'
+
 # Use Angular templates with Rails' Asset Pipeline
 gem 'angular-rails-templates'
 
