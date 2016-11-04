@@ -26,6 +26,9 @@ gem 'responders', '~> 2.3'
 # Use Angular templates with Rails' Asset Pipeline
 gem 'angular-rails-templates'
 
+# Rails integration for AngularJS style CSRF protection
+gem 'angular_rails_csrf', '~> 2.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
