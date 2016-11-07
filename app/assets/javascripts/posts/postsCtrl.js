@@ -1,10 +1,10 @@
 Esthar.controller('PostsCtrl', [
   '$scope',
-  '$stateParams',
   'posts',
+  'post',
 
-  function ($scope, $stateParams, posts) {
-    $scope.post = posts.posts[$stateParams.id];
+  function ($scope, posts, post) {
+    $scope.post = post;
 
     $scope.addComment = function () {
       if (!$scope.body || $scope.body === '') {

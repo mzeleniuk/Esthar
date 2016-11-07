@@ -9,6 +9,12 @@ Esthar.factory('posts', ['$http', function ($http) {
     });
   };
 
+  object.get = function (id) {
+    return $http.get('/posts/' + id + '.json').then(function (response) {
+      return response.data;
+    });
+  };
+
   object.create = function (post) {
     return $http.post('/posts.json', post).success(function (data) {
       object.posts.push(data);
