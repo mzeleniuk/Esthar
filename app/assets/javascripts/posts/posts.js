@@ -31,5 +31,12 @@ Esthar.factory('posts', ['$http', function ($http) {
     return $http.post('/posts/' + id + '/comments.json', comment);
   };
 
+  object.upvoteComment = function (post, comment) {
+    return $http.put('/posts/' + post.id + '/comments/' + comment.id + '/upvote.json', post, comment)
+      .success(function () {
+        comment.upvotes += 1;
+      });
+  };
+
   return object;
 }]);

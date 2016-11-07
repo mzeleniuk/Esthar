@@ -25,7 +25,7 @@ Esthar.controller('PostsCtrl', [
     };
 
     $scope.incrementUpvotes = function (comment) {
-      comment.upvotes += 1;
+      posts.upvoteComment(post, comment)
     };
   }
 ]);
