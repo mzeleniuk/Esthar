@@ -27,5 +27,9 @@ Esthar.factory('posts', ['$http', function ($http) {
     });
   };
 
+  object.addComment = function (id, comment) {
+    return $http.post('/posts/' + id + '/comments.json', comment);
+  };
+
   return object;
 }]);
