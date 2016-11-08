@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.11'
 
 # Use Puma as the app server
 gem 'puma'
@@ -28,6 +28,9 @@ gem 'angular-rails-templates'
 
 # Rails integration for AngularJS style CSRF protection
 gem 'angular_rails_csrf', '~> 2.0'
+
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
