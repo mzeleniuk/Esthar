@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to allow_value('frst.lst@mail.jp').for(:email) }
   it { is_expected.to allow_value('a+b@baz.cn').for(:email) }
   it { is_expected.to_not allow_value('user@example,com').for(:email) }
+  it { is_expected.to_not allow_value('user@mail').for(:email) }
   it { is_expected.to_not allow_value('user_at_foo.org').for(:email) }
   it { is_expected.to_not allow_value('example.user@foo.foo@bar_baz.com').for(:email) }
   it { is_expected.to_not allow_value('foo@bar+baz.com').for(:email) }
