@@ -5,16 +5,78 @@
         <h1>Log In</h1>
       </div>
 
-      <form ng-submit="login()">
-        <div class="form-group">
-          <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+      <div class="alert alert-danger" role="alert" ng-show="wrongCredentials">
+        <strong>Sorry!</strong> You entered incorrect email or password. Please try again.
+      </div>
+
+      <form name="login_form" role="form" ng-submit="login()" novalidate>
+        <div class="form-group" ng-class="{
+          'has-error has-feedback':login_form.email.$invalid && login_form.email.$touched,
+          'has-success has-feedback': login_form.email.$valid
+        }">
+          <div class="input-group">
+            <span class="input-group-addon" id="email-field"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="email-field"
+                   ng-model="user.email" required>
+          </div>
+
+          <div ng-show="login_form.$submitted || login_form.email.$touched || login_form.email.$dirty">
+            <div ng-show="login_form.email.$error.required">
+              <p class="help-block">
+                <span class="text-danger">Field is required</span>
+              </p>
+            </div>
+          </div>
+
+          <div ng-show="login_form.email.$dirty && login_form.email.$error.email">
+            <p class="help-block">
+              <span class="text-danger">Wrong email format</span>
+            </p>
+          </div>
+
+          <div ng-show="login_form.email.$valid">
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+          </div>
+
+          <div ng-show="login_form.email.$invalid && login_form.email.$touched">
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          </div>
         </div>
 
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+        <div class="form-group" ng-class="{
+          'has-error has-feedback':login_form.password.$invalid && login_form.password.$touched,
+          'has-success has-feedback': login_form.password.$valid
+        }">
+          <div class="input-group">
+            <span class="input-group-addon" id="password-field"><i class="glyphicon glyphicon-lock"></i></span>
+            <input type="password" name="password" class="form-control" placeholder="Password"
+                   aria-describedby="password-field" ng-model="user.password" ng-minlength="6" required>
+          </div>
+
+          <div ng-show="login_form.$submitted || login_form.password.$touched || login_form.password.$dirty">
+            <div ng-show="login_form.password.$error.required">
+              <p class="help-block">
+                <span class="text-danger">Field is required</span>
+              </p>
+            </div>
+          </div>
+
+          <div ng-show="login_form.password.$dirty && login_form.password.$error.minlength">
+            <p class="help-block">
+              <span class="text-danger">Password is too short</span>
+            </p>
+          </div>
+
+          <div ng-show="login_form.password.$valid">
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+          </div>
+
+          <div ng-show="login_form.password.$invalid && login_form.password.$touched">
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          </div>
         </div>
 
-        <input type="submit" class="btn btn-default" value="Log In">
+        <input type="submit" class="btn btn-default" value="Log In" ng-disabled="login_form.$invalid">
       </form>
     </div>
   </div>
