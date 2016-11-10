@@ -5,5 +5,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   validates_presence_of :email, :username
+
+  validates :email, length: {maximum: 50},
+            format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
+  validates :username, length: {maximum: 15}
+  validates :password, length: {minimum: 6}
+  validates :first_name, :last_name, length: {maximum: 25}
+  validates :phone, numericality: {only_integer: true}, length: {maximum: 20}
+  validates :website, length: {maximum: 100}
 end

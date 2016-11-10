@@ -6,6 +6,7 @@ RSpec.describe Post, type: :model do
 
   # Validations
   it { is_expected.to validate_presence_of(:title) }
+  it { is_expected.to validate_length_of(:title).is_at_most(500).with_message('is too long (maximum is 500 characters)') }
 
   describe '#as_json' do
     let(:post) { create :post }
