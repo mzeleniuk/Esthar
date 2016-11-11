@@ -17,7 +17,7 @@
           <div class="input-group">
             <span class="input-group-addon" id="email-field"><i class="glyphicon glyphicon-envelope"></i></span>
             <input type="email" name="email" class="form-control" placeholder="Email" aria-describedby="email-field"
-                   ng-model="user.email" required>
+                   ng-model="user.email" ng-pattern="/(\w+)\@(\w+)\.[a-zA-Z]/i" required>
           </div>
 
           <div ng-show="login_form.$submitted || login_form.email.$touched || login_form.email.$dirty">
@@ -28,7 +28,7 @@
             </div>
           </div>
 
-          <div ng-show="login_form.email.$dirty && login_form.email.$error.email">
+          <div ng-show="login_form.email.$dirty && login_form.email.$error.pattern">
             <p class="help-block">
               <span class="text-danger">Wrong email format</span>
             </p>

@@ -1,0 +1,40 @@
+body {
+  background-color: #f9f9f9;
+}
+
+.main-logo {
+  background: url(asset_path('Esthar_logo.png')) no-repeat;
+  background-size: 100px;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.main-title {
+  font: 100%/1.5 "Roboto", Verdana, sans-serif;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #6b15a1;
+  font-size: 6rem;
+  cursor: default;
+
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+
+  background-image: -webkit-linear-gradient(92deg, #6b15a1, #feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 60s infinite linear;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
