@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <form role="form" name="form" ng-submit="addComment()" style="margin-top: 30px;" novalidate>
+      <form role="form" name="form" ng-submit="addComment()" ng-show="signedIn()" style="margin-top: 30px;" novalidate>
         <div class="panel panel-success">
           <div class="panel-heading">
             <h3 class="panel-title">Add a new comment</h3>

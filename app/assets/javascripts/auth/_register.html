@@ -47,7 +47,7 @@
             <span class="input-group-addon" id="email-field"><i class="glyphicon glyphicon-envelope"></i></span>
             <input type="email" name="email" class="form-control" placeholder="Email"
                    aria-describedby="email-field" ng-model="user.email"
-                   ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/" required>
+                   ng-pattern="/(\w+)\@(\w+)\.[a-zA-Z]/i" required>
           </div>
 
           <div ng-show="registration_form.$submitted || registration_form.email.$touched || registration_form.email.$dirty">

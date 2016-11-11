@@ -1,10 +1,7 @@
-Esthar.controller('PostsCtrl', [
-  '$scope',
-  'posts',
-  'post',
-
-  function ($scope, posts, post) {
+Esthar.controller('PostsCtrl', ['$scope', 'posts', 'post', 'Auth',
+  function ($scope, posts, post, Auth) {
     $scope.post = post;
+    $scope.signedIn = Auth.isAuthenticated;
 
     $scope.addComment = function () {
       if (!$scope.body || $scope.body === '') {

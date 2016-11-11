@@ -26,7 +26,7 @@
         </li>
       </div>
 
-      <form style="margin-top: 30px;" role="form" ng-submit="addPost()" name="form" novalidate>
+      <form style="margin-top: 30px;" role="form" ng-submit="addPost()" name="form" ng-show="signedIn()" novalidate>
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Add a new Post</h3>
