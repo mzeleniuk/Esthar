@@ -29,6 +29,10 @@
             </a>
 
             <span ng-hide="post.link">{{post.title}}</span>
+
+            <span class="text-muted small">
+              - posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
+            </span>
           </span>
         </li>
       </div>
