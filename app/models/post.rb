@@ -6,6 +6,6 @@ class Post < ActiveRecord::Base
   validates :title, presence: true, length: {maximum: 500}
 
   def as_json(options = {})
-    super(options.merge(include: [:user, :comments]))
+    super(options.merge(include: [:user, comments: {include: :user}]))
   end
 end

@@ -25,7 +25,10 @@
 
             <span style="font-size: 20px; margin-left: 10px;">
               {{comment.body}}
-              <span class="small text-muted"> - by {{comment.author}}</span>
+
+              <span class="text-muted small">
+                - by <a ng-href="#/users/{{post.user.username}}">{{comment.user.username}}</a>
+              </span>
             </span>
           </div>
         </div>
