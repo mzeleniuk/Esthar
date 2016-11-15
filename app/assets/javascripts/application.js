@@ -15,6 +15,6 @@
 //= require angular-ui-router
 //= require AngularDevise
 //= require jquery/dist/jquery.min
-//= require bootstrap/dist/js/bootstrap.min
+//= require bootstrap-sass/assets/javascripts/bootstrap.min
 //= require esthar.js
 //= require_tree .
