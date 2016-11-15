@@ -1,0 +1,22 @@
+{
+  "name": "esthar",
+  "version": "1.0.0",
+  "description": "Social news aggregation, web content rating and discussion website",
+  "main": "esthar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mzelenyuk/Esthar.git"
+  },
+  "author": "Michael Zelenyuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mzelenyuk/Esthar/issues"
+  },
+  "homepage": "https://github.com/mzelenyuk/Esthar#readme",
+  "dependencies": {
+    "bower": "^1.8.0"
+  }
+}
