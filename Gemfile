@@ -67,3 +67,6 @@ group :test do
   # Collection of testing matchers extracted from Shoulda
   gem 'shoulda-matchers', '~> 3.1'
 end
+
+# Enable all Heroku platform features
+gem 'rails_12factor', group: :production
