@@ -4,6 +4,9 @@ RSpec.describe Comment, type: :model do
   # Associations
   it { is_expected.to belong_to(:post) }
 
+  it { is_expected.to have_many(:votes).dependent(:destroy) }
+  it { is_expected.to have_many(:voted_users).through(:votes).source(:user) }
+
   # Validations
   it { is_expected.to validate_presence_of(:body) }
   it { is_expected.to validate_presence_of(:post) }
