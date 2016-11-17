@@ -15,7 +15,12 @@ class PostsController < ApplicationController
 
   def upvote
     post = Post.find(params[:id])
-    post.increment!(:upvotes)
+
+    if post.votes.create(user_id: current_user.id).save
+      post.increment!(:upvotes)
+    else
+      return render json: {error: 'Already voted'}, status: 422
+    end
 
     respond_with post
   end

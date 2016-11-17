@@ -121,18 +121,36 @@ RSpec.describe PostsController, type: :controller do
     context 'when user is authenticated' do
       before { sign_in user }
 
-      it 'responds successfully with JSON format' do
-        put :upvote, id: post.id, format: :json
+      context 'and user is not voted yet' do
+        it 'responds successfully with JSON format' do
+          put :upvote, id: post.id, format: :json
 
-        expect(response.content_type).to eq('application/json')
+          expect(response.content_type).to eq('application/json')
+        end
+
+        it 'increases upvotes count' do
+          put :upvote, id: post.id, format: :json
+
+          post.reload
+
+          expect(post.upvotes).to eq(1)
+        end
       end
 
-      it 'increases upvotes count' do
-        put :upvote, id: post.id, format: :json
+      context 'and user is already voted' do
+        let!(:vote) { create :vote, user: user, post_id: post.id }
 
-        post.reload
+        it 'responds successfully with JSON format' do
+          put :upvote, id: post.id, format: :json
 
-        expect(post.upvotes).to eq(1)
+          expect(response.content_type).to eq('application/json')
+        end
+
+        it 'does not increases upvotes count' do
+          put :upvote, id: post.id, format: :json
+
+          expect(response).to have_http_status(422)
+        end
       end
     end
 

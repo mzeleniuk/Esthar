@@ -12,6 +12,10 @@
         </div>
       </div>
 
+      <div class="alert alert-warning" role="alert" ng-show="alreadyVoted">
+        <strong>Sorry!</strong> But you've already voted for this post.
+      </div>
+
       <div class="list-group" ng-repeat="post in posts | orderBy: '-upvotes'">
         <li class="list-group-item">
           <span class="badge" style="cursor: pointer;" ng-click="incrementUpvotes(post)">
