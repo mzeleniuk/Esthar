@@ -18,13 +18,10 @@
 
       <div class="list-group" ng-repeat="post in posts | orderBy: '-upvotes'">
         <li class="list-group-item">
-          <span class="badge" style="cursor: pointer;" ng-click="incrementUpvotes(post)">
+          <span class="badge" style="cursor: pointer; font-size: 14px;"
+                ng-show="signedIn()"
+                ng-click="incrementUpvotes(post)">
             <span class="glyphicon glyphicon-thumbs-up"></span>
-            {{post.upvotes}}
-          </span>
-
-          <span class="badge">
-            <a href="#/posts/{{post.id}}" style="color: #FFFFFF;">Comments ({{post.comments.length}})</a>
           </span>
 
           <span style="font-size: 20px; margin-left: 10px;">
@@ -37,6 +34,23 @@
             <span class="text-muted small">
               - posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
             </span>
+            <br>
+
+            <span class="small" style="margin-left: 10px;">
+              <span class="label label-primary" title="Votes">
+                <span class="glyphicon glyphicon-star"></span>
+                {{post.upvotes}}
+              </span>
+            </span>
+
+            <a href="#/posts/{{post.id}}" style="text-decoration: none;">
+              <span class="small" style="margin-left: 10px;">
+                <span class="label label-success" title="Comments">
+                  <span class="glyphicon glyphicon-comment"></span>
+                  {{post.comments.length}}
+                </span>
+              </span>
+            </a>
           </span>
         </li>
       </div>
