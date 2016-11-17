@@ -14,6 +14,7 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require AngularDevise
+//= require angular-animate
 //= require jquery/dist/jquery.min
 //= require bootstrap-sass/assets/javascripts/bootstrap.min
 //= require esthar.js
