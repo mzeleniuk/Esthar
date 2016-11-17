@@ -100,18 +100,36 @@ RSpec.describe CommentsController, type: :controller do
     context 'when user is authenticated' do
       before { sign_in user }
 
-      it 'responds successfully with JSON format' do
-        put :upvote, post_id: new_post.id, id: comment.id, format: :json
+      context 'and user is not voted yet' do
+        it 'responds successfully with JSON format' do
+          put :upvote, post_id: new_post.id, id: comment.id, format: :json
 
-        expect(response.content_type).to eq('application/json')
+          expect(response.content_type).to eq('application/json')
+        end
+
+        it 'increases upvotes count' do
+          put :upvote, post_id: new_post.id, id: comment.id, format: :json
+
+          comment.reload
+
+          expect(comment.upvotes).to eq(1)
+        end
       end
 
-      it 'increases upvotes count' do
-        put :upvote, post_id: new_post.id, id: comment.id, format: :json
+      context 'and user is already voted' do
+        let!(:vote) { create :vote, user: user, comment: comment }
 
-        comment.reload
+        it 'responds successfully with JSON format' do
+          put :upvote, post_id: new_post.id, id: comment.id, format: :json
 
-        expect(comment.upvotes).to eq(1)
+          expect(response.content_type).to eq('application/json')
+        end
+
+        it 'does not increases upvotes count' do
+          put :upvote, post_id: new_post.id, id: comment.id, format: :json
+
+          expect(response).to have_http_status(422)
+        end
       end
     end
 

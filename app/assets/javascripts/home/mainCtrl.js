@@ -22,10 +22,10 @@ Esthar.controller('MainCtrl', ['$scope', '$timeout', 'posts', 'Auth',
 
     $scope.incrementUpvotes = function (post) {
       posts.upvote(post).error(function () {
-        $scope.alreadyVoted = true;
+        $scope.postAlreadyVoted = true;
 
         $timeout(function () {
-          $scope.alreadyVoted = false
+          $scope.postAlreadyVoted = false
         }, 3000);
       });
     };

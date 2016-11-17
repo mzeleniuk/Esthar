@@ -18,7 +18,12 @@ class CommentsController < ApplicationController
   def upvote
     post = Post.find(params[:post_id])
     comment = post.comments.find(params[:id])
-    comment.increment!(:upvotes)
+
+    if comment.votes.create(user_id: current_user.id).save
+      comment.increment!(:upvotes)
+    else
+      return render json: {error: 'Already voted'}, status: 422
+    end
 
     respond_with post, comment
   end
