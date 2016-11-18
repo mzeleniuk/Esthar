@@ -20,11 +20,12 @@
           </h3>
         </div>
 
-        <div class="panel-body">
-          <div ng-repeat="comment in post.comments | orderBy: '-upvotes'">
-            <span class="badge pull-right" style="cursor: pointer;" ng-click="incrementUpvotes(comment)">
+        <ul class="list-group" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+          <li class="list-group-item">
+            <span class="badge pull-right" style="cursor: pointer; font-size: 14px;"
+                  ng-show="signedIn()"
+                  ng-click="incrementUpvotes(comment)">
               <span class="glyphicon glyphicon-thumbs-up"></span>
-              {{comment.upvotes}}
             </span>
 
             <span style="font-size: 20px; margin-left: 10px;">
@@ -33,9 +34,17 @@
               <span class="text-muted small">
                 - by <a ng-href="#/users/{{post.user.username}}">{{comment.user.username}}</a>
               </span>
+              <br>
+
+              <span class="small" style="margin-left: 10px;">
+                <span class="label label-primary" title="Votes">
+                  <span class="glyphicon glyphicon-star"></span>
+                  {{comment.upvotes}}
+                </span>
+              </span>
             </span>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
 
       <form role="form" name="form" ng-submit="addComment()" ng-show="signedIn()" style="margin-top: 30px;" novalidate>
