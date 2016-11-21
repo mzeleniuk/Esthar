@@ -14,7 +14,10 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require AngularDevise
+//= require angular-sanitize
 //= require angular-animate
+//= require medium-editor/dist/js/medium-editor.min
+//= require angular-medium-editor/dist/angular-medium-editor.min
 //= require jquery/dist/jquery.min
 //= require bootstrap-sass/assets/javascripts/bootstrap.min
 //= require esthar.js

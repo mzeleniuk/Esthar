@@ -27,6 +27,21 @@
           </h3>
         </div>
 
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <span class="label label-primary pull-right" title="Votes" style="margin-right: 15px;">
+                <span class="glyphicon glyphicon-star"></span>
+                {{post.upvotes}}
+              </span>
+            </div>
+
+            <div class="bs-text bs-text-post">
+              <span ng-bind-html="post.body"></span>
+            </div>
+          </li>
+        </ul>
+
         <ul class="list-group" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
           <li class="list-group-item">
             <span class="badge pull-right" style="cursor: pointer; font-size: 14px;"
@@ -44,7 +59,7 @@
               <br>
 
               <span class="small" style="margin-left: 10px;">
-                <span class="label label-primary" title="Votes">
+                <span class="label label-success" title="Votes">
                   <span class="glyphicon glyphicon-star"></span>
                   {{comment.upvotes}}
                 </span>

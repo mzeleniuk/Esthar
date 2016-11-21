@@ -1,4 +1,11 @@
-var Esthar = angular.module('Esthar', ['ui.router', 'templates', 'Devise', 'ngAnimate']);
+var Esthar = angular.module('Esthar', [
+  'ui.router',
+  'templates',
+  'Devise',
+  'ngAnimate',
+  'angular-medium-editor',
+  'ngSanitize'
+]);
 
 Esthar.config([
   '$stateProvider',

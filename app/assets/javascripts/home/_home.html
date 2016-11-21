@@ -34,7 +34,10 @@
             <span class="text-muted small">
               - posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a>
             </span>
-            <br>
+
+            <div class="bs-text bs-text-post">
+              <span ng-bind-html="post.body"></span>
+            </div>
 
             <span class="small" style="margin-left: 10px;">
               <span class="label label-primary" title="Votes">
@@ -89,6 +92,32 @@
 
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Link" ng-model="link">
+            </div>
+
+            <div class="form-group" ng-class="{
+              'has-error has-feedback':form.body.$invalid && form.body.$touched,
+              'has-success has-feedback': form.body.$valid
+            }">
+
+              <p name="body" class="form-control editor" aria-describedby="body-field" ng-model="body" medium-editor
+                 bind-options="{'targetBlank': true, 'toolbar': {'buttons': ['bold', 'italic', 'underline', 'anchor']}}"
+                 required></p>
+
+              <div ng-show="form.$submitted || form.body.$touched || form.body.$dirty">
+                <div ng-show="form.body.$error.required">
+                  <p class="help-block">
+                    <span class="text-danger">Field is required</span>
+                  </p>
+                </div>
+              </div>
+
+              <div ng-show="form.body.$valid">
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+              </div>
+
+              <div ng-show="form.body.$invalid && form.body.$touched">
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Post</button>
