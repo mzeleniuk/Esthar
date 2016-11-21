@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   has_many :voted_users, through: :votes, source: :user
 
   validates :title, presence: true, length: {maximum: 500}
+  validates_presence_of :body
 
   def as_json(options = {})
     super(options.merge(include: [:user, comments: {include: :user}]))

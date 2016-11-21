@@ -31,13 +31,13 @@ RSpec.describe PostsController, type: :controller do
 
       context 'with valid post params' do
         it 'responds successfully with JSON format' do
-          post :create, post: {title: 'Test Post'}, format: :json
+          post :create, post: {title: 'Test Post', body: 'Some text.'}, format: :json
 
           expect(response.content_type).to eq('application/json')
         end
 
         it 'creates a new Post' do
-          post :create, post: {title: 'Test Post'}, format: :json
+          post :create, post: {title: 'Test Post', body: 'Some text.'}, format: :json
 
           expect(Post.count).to eq(1)
         end
@@ -45,13 +45,13 @@ RSpec.describe PostsController, type: :controller do
 
       context 'with invalid post params' do
         it 'responds successfully with JSON format' do
-          post :create, post: {title: nil}, format: :json
+          post :create, post: {title: nil, body: nil}, format: :json
 
           expect(response.content_type).to eq('application/json')
         end
 
         it 'does not creates a new Post' do
-          post :create, post: {title: nil}, format: :json
+          post :create, post: {title: nil, body: nil}, format: :json
 
           expect(Post.count).to eq(0)
         end
@@ -61,13 +61,13 @@ RSpec.describe PostsController, type: :controller do
     context 'when user is not authenticated' do
       context 'with valid post params' do
         it 'does not responds successfully with JSON format' do
-          post :create, post: {title: 'Test Post'}, format: :json
+          post :create, post: {title: 'Test Post', body: 'Some text.'}, format: :json
 
           expect(response.content_type).to eq(nil)
         end
 
         it 'does not creates a new Post' do
-          post :create, post: {title: 'Test Post'}, format: :json
+          post :create, post: {title: 'Test Post', body: 'Some text.'}, format: :json
 
           expect(Post.count).to eq(0)
           expect(response).to have_http_status(401)
@@ -76,13 +76,13 @@ RSpec.describe PostsController, type: :controller do
 
       context 'with invalid post params' do
         it 'does not responds successfully with JSON format' do
-          post :create, post: {title: nil}, format: :json
+          post :create, post: {title: nil, body: nil}, format: :json
 
           expect(response.content_type).to eq(nil)
         end
 
         it 'does not creates a new Post' do
-          post :create, post: {title: nil}, format: :json
+          post :create, post: {title: nil, body: nil}, format: :json
 
           expect(Post.count).to eq(0)
           expect(response).to have_http_status(401)
