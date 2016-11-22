@@ -39,17 +39,15 @@
             <div class="bs-text bs-text-post">
               <span ng-bind-html="post.body"></span>
             </div>
+
+            <p class="text-muted">
+              <em>posted by <a ng-href="#/users/{{post.user.username}}">{{post.user.username}}</a></em>
+            </p>
           </li>
         </ul>
 
         <ul class="list-group" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
           <li class="list-group-item">
-            <span class="badge pull-right" style="cursor: pointer; font-size: 14px;"
-                  ng-show="signedIn()"
-                  ng-click="incrementUpvotes(comment)">
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-            </span>
-
             <span style="font-size: 20px; margin-left: 10px;">
               {{comment.body}}
 
@@ -63,6 +61,13 @@
                   <span class="glyphicon glyphicon-star"></span>
                   {{comment.upvotes}}
                 </span>
+              </span>
+
+              <span class="btn-outline outline-success btn-sm pull-right" title="Vote for this comment"
+                    ng-show="signedIn()"
+                    ng-click="incrementUpvotes(comment)">
+                <span class="glyphicon glyphicon-star"></span>
+                <span>Vote</span>
               </span>
             </span>
           </li>
