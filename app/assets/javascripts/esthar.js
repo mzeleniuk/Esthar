@@ -4,7 +4,8 @@ var Esthar = angular.module('Esthar', [
   'Devise',
   'ngAnimate',
   'angular-medium-editor',
-  'ngSanitize'
+  'ngSanitize',
+  'truncate'
 ]);
 
 Esthar.config([

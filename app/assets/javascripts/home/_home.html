@@ -36,7 +36,7 @@
             </span>
 
             <div class="bs-text bs-text-post">
-              <span ng-bind-html="post.body"></span>
+              <span ng-bind-html="post.body | words:50"></span>
             </div>
 
             <span class="small" style="margin-left: 10px;">
@@ -46,14 +46,14 @@
               </span>
             </span>
 
-            <a href="#/posts/{{post.id}}" style="text-decoration: none;">
-              <span class="small" style="margin-left: 10px;">
-                <span class="label label-success" title="Comments">
-                  <span class="glyphicon glyphicon-comment"></span>
-                  {{post.comments.length}}
-                </span>
+            <span class="small" style="margin-left: 10px;">
+              <span class="label label-success" title="Comments">
+                <span class="glyphicon glyphicon-comment"></span>
+                {{post.comments.length}}
               </span>
-            </a>
+            </span>
+
+            <a href="#/posts/{{post.id}}" class="btn btn-link">View more &raquo;</a>
           </span>
         </li>
       </ul>
