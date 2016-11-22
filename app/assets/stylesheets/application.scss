@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require medium-editor/dist/css/medium-editor.min
+ *= require medium-editor/dist/css/themes/bootstrap.min
  *= require_tree .
  *= require_self
  */
@@ -18,7 +20,5 @@ $icon-font-path: "bootstrap-sass/assets/fonts/bootstrap/";
 
 @import "bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
-@import "medium-editor/dist/css/medium-editor.min.css";
-@import "medium-editor/dist/css/themes/bootstrap.min.css";
 @import "navigation";
 @import "medium_editor";
