@@ -36,6 +36,17 @@ Esthar.config([
         }
       })
 
+      .state('users', {
+        url: '/users/{id}',
+        templateUrl: 'users/_user.html',
+        controller: 'UsersCtrl',
+        resolve: {
+          user: ['$stateParams', 'users', function ($stateParams, users) {
+            return users.get($stateParams.id);
+          }]
+        }
+      })
+
       .state('login', {
         url: '/login',
         templateUrl: 'auth/_login.html',
