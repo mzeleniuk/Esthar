@@ -30,7 +30,10 @@
             </div>
 
             <p class="text-muted small">
-              <em>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></em>
+              <em>
+                <span>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></span>
+                <span>at {{post.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}</span>
+              </em>
             </p>
 
             <div class="row">

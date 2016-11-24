@@ -41,7 +41,10 @@
             </div>
 
             <p class="text-muted">
-              <em>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></em>
+              <em>
+                <span>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></span>
+                <span>at {{post.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}</span>
+              </em>
             </p>
           </li>
         </ul>
@@ -52,7 +55,10 @@
               {{comment.body}}
 
               <span class="text-muted small">
-                - by <a ng-href="#/users/{{comment.user.id}}">{{comment.user.username}}</a>
+                <em>
+                  - by <a ng-href="#/users/{{comment.user.id}}">{{comment.user.username}}</a>
+                  at {{comment.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}
+                </em>
               </span>
               <br>
 
