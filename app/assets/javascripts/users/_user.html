@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <div class="panel panel-info">
+      <div class="panel panel-info user-profile">
         <div class="panel-heading">
           <h3 class="panel-title">{{user.username}}</h3>
         </div>
@@ -34,11 +34,11 @@
                     <td>Last name:</td>
                     <td>{{user.last_name}}</td>
                   </tr>
-                  <tr ng-show="user.username">
+                  <tr>
                     <td>Username:</td>
                     <td>{{user.username}}</td>
                   </tr>
-                  <tr ng-show="user.email && signedIn()">
+                  <tr ng-show="signedIn()">
                     <td>Email:</td>
                     <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
                   </tr>
@@ -53,6 +53,10 @@
                   <tr ng-show="user.website">
                     <td>Website:</td>
                     <td>{{user.website}}</td>
+                  </tr>
+                  <tr>
+                    <td>Joined at:</td>
+                    <td>{{user.created_at | date : 'EEEE, MMMM d, y'}}</td>
                   </tr>
                 </tbody>
               </table>
