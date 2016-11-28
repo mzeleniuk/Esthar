@@ -16,7 +16,7 @@
         <strong>Sorry!</strong> But you've already voted for this post.
       </div>
 
-      <ul class="list-group" ng-repeat="post in posts | orderBy: '-upvotes'">
+      <ul class="list-group fade-animation" ng-repeat="post in posts | orderBy: '-upvotes'">
         <li class="list-group-item">
           <span style="font-size: 20px; margin-left: 10px;">
             <a ng-show="post.link" href="{{post.link}}" target="_blank">
@@ -68,7 +68,9 @@
         </li>
       </ul>
 
-      <form style="margin-top: 30px;" role="form" ng-submit="addPost()" name="form" ng-show="signedIn()" novalidate>
+      <form name="form" role="form" class="fade-animation" style="margin-top: 30px;"
+            ng-submit="addPost()" ng-show="signedIn()" novalidate>
+
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Add a new Post</h3>
