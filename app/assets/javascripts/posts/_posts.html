@@ -16,7 +16,7 @@
         <strong>Sorry!</strong> But you've already voted for this comment.
       </div>
 
-      <div class="panel panel-success">
+      <div class="panel panel-success fade-animation">
         <div class="panel-heading text-center">
           <h3 class="panel-title">
             <a ng-show="post.link" href="{{post.link}}">
@@ -49,7 +49,7 @@
           </li>
         </ul>
 
-        <ul class="list-group" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+        <ul class="list-group fade-animation" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
           <li class="list-group-item">
             <span style="font-size: 20px; margin-left: 10px;">
               {{comment.body}}
@@ -80,7 +80,9 @@
         </ul>
       </div>
 
-      <form role="form" name="form" ng-submit="addComment()" ng-show="signedIn()" style="margin-top: 30px;" novalidate>
+      <form name="form" role="form" class="fade-animation" style="margin-top: 30px;"
+            ng-submit="addComment()" ng-show="signedIn()" novalidate>
+
         <div class="panel panel-success">
           <div class="panel-heading">
             <h3 class="panel-title">Add a new comment</h3>
