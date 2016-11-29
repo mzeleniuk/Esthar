@@ -1,141 +1,124 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-      <div class="page-header">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs text-right">
-            <div class="main-logo"></div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-left">
-            <h1 class="main-title">Esthar</h1>
-          </div>
-        </div>
+<div class="alert alert-warning" role="alert" ng-show="postAlreadyVoted">
+  <strong>Sorry!</strong> But you've already voted for this post.
+</div>
+
+<ul class="list-group fade-animation" ng-repeat="post in posts | orderBy: '-upvotes'">
+  <li class="list-group-item">
+    <span style="font-size: 20px; margin-left: 10px;">
+      <a ng-show="post.link" href="{{post.link}}" target="_blank">
+        {{post.title}}
+      </a>
+
+      <span ng-hide="post.link">{{post.title}}</span>
+
+      <div class="bs-text bs-text-post">
+        <span ng-bind-html="post.body | words:50"></span>
       </div>
 
-      <div class="alert alert-warning" role="alert" ng-show="postAlreadyVoted">
-        <strong>Sorry!</strong> But you've already voted for this post.
-      </div>
+      <p class="text-muted small">
+        <em>
+          <span>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></span>
+          <span>at {{post.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}</span>
+        </em>
+      </p>
 
-      <ul class="list-group fade-animation" ng-repeat="post in posts | orderBy: '-upvotes'">
-        <li class="list-group-item">
-          <span style="font-size: 20px; margin-left: 10px;">
-            <a ng-show="post.link" href="{{post.link}}" target="_blank">
-              {{post.title}}
-            </a>
-
-            <span ng-hide="post.link">{{post.title}}</span>
-
-            <div class="bs-text bs-text-post">
-              <span ng-bind-html="post.body | words:50"></span>
-            </div>
-
-            <p class="text-muted small">
-              <em>
-                <span>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></span>
-                <span>at {{post.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}</span>
-              </em>
-            </p>
-
-            <div class="row">
-              <div class="col-lg-8 col-md-8 col-sm-8">
-                <span class="small">
-                  <span class="label label-primary" title="Votes">
-                    <span class="glyphicon glyphicon-star"></span>
-                    {{post.upvotes}}
-                  </span>
-                </span>
-
-                <span class="small" style="margin-left: 10px;">
-                  <span class="label label-success" title="Comments">
-                    <span class="glyphicon glyphicon-comment"></span>
-                    {{post.comments.length}}
-                  </span>
-                </span>
-
-                <a href="#/posts/{{post.id}}" class="btn btn-link">View more &raquo;</a>
-              </div>
-
-              <div class="col-lg-4 col-md-4 col-sm-4">
-                <span class="btn-outline outline-primary btn-sm pull-right" title="Vote for this post"
-                      ng-show="signedIn()"
-                      ng-click="incrementUpvotes(post)">
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span>Vote</span>
-                </span>
-              </div>
-            </div>
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <span class="small">
+            <span class="label label-primary" title="Votes">
+              <span class="glyphicon glyphicon-star"></span>
+              {{post.upvotes}}
+            </span>
           </span>
-        </li>
-      </ul>
 
-      <form name="form" role="form" class="fade-animation" style="margin-top: 30px;"
-            ng-submit="addPost()" ng-show="signedIn()" novalidate>
+          <span class="small" style="margin-left: 10px;">
+            <span class="label label-success" title="Comments">
+              <span class="glyphicon glyphicon-comment"></span>
+              {{post.comments.length}}
+            </span>
+          </span>
 
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Add a new Post</h3>
-          </div>
+          <a href="#/posts/{{post.id}}" class="btn btn-link">View more &raquo;</a>
+        </div>
 
-          <div class="panel-body">
-            <div class="form-group" ng-class="{'has-error has-feedback':form.title.$invalid && form.title.$touched,
-            'has-success has-feedback': form.title.$valid}">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <span class="btn-outline outline-primary btn-sm pull-right" title="Vote for this post"
+                ng-show="signedIn()"
+                ng-click="incrementUpvotes(post)">
+            <span class="glyphicon glyphicon-star"></span>
+            <span>Vote</span>
+          </span>
+        </div>
+      </div>
+    </span>
+  </li>
+</ul>
 
-              <input type="text" class="form-control" placeholder="Title"
-                     ng-model="title"
-                     name="title"
-                     required="">
+<form name="form" role="form" class="fade-animation" style="margin-top: 30px;"
+      ng-submit="addPost()" ng-show="signedIn()" novalidate>
 
-              <div ng-show="form.$submitted || form.title.$touched || form.title.$dirty">
-                <div ng-show="form.title.$error.required">
-                  <p class="help-block">
-                    <span class="text-danger">Can't be blank</span>
-                  </p>
-                </div>
-              </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add a new Post</h3>
+    </div>
 
-              <div ng-show="form.title.$valid">
-                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-              </div>
+    <div class="panel-body">
+      <div class="form-group" ng-class="{'has-error has-feedback':form.title.$invalid && form.title.$touched,
+      'has-success has-feedback': form.title.$valid}">
 
-              <div ng-show="form.title.$invalid && form.title.$touched">
-                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-              </div>
-            </div>
+        <input type="text" class="form-control" placeholder="Title"
+               ng-model="title"
+               name="title"
+               required="">
 
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Link" ng-model="link">
-            </div>
-
-            <div class="form-group" ng-class="{
-              'has-error has-feedback':form.body.$invalid && form.body.$touched,
-              'has-success has-feedback': form.body.$valid
-            }">
-
-              <p name="body" class="form-control editor" aria-describedby="body-field" ng-model="body" medium-editor
-                 bind-options="{'targetBlank': true, 'toolbar': {'buttons': ['bold', 'italic', 'underline', 'anchor']}}"
-                 required></p>
-
-              <div ng-show="form.$submitted || form.body.$touched || form.body.$dirty">
-                <div ng-show="form.body.$error.required">
-                  <p class="help-block">
-                    <span class="text-danger">Field is required</span>
-                  </p>
-                </div>
-              </div>
-
-              <div ng-show="form.body.$valid">
-                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-              </div>
-
-              <div ng-show="form.body.$invalid && form.body.$touched">
-                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Post</button>
+        <div ng-show="form.$submitted || form.title.$touched || form.title.$dirty">
+          <div ng-show="form.title.$error.required">
+            <p class="help-block">
+              <span class="text-danger">Can't be blank</span>
+            </p>
           </div>
         </div>
-      </form>
+
+        <div ng-show="form.title.$valid">
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        </div>
+
+        <div ng-show="form.title.$invalid && form.title.$touched">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Link" ng-model="link">
+      </div>
+
+      <div class="form-group" ng-class="{
+        'has-error has-feedback':form.body.$invalid && form.body.$touched,
+        'has-success has-feedback': form.body.$valid
+      }">
+
+        <p name="body" class="form-control editor" aria-describedby="body-field" ng-model="body" medium-editor
+           bind-options="{'targetBlank': true, 'toolbar': {'buttons': ['bold', 'italic', 'underline', 'anchor']}}"
+           required></p>
+
+        <div ng-show="form.$submitted || form.body.$touched || form.body.$dirty">
+          <div ng-show="form.body.$error.required">
+            <p class="help-block">
+              <span class="text-danger">Field is required</span>
+            </p>
+          </div>
+        </div>
+
+        <div ng-show="form.body.$valid">
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        </div>
+
+        <div ng-show="form.body.$invalid && form.body.$touched">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Post</button>
     </div>
   </div>
-</div>
+</form>

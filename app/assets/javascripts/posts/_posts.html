@@ -1,120 +1,103 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-      <div class="page-header">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6 hidden-xs text-right">
-            <div class="main-logo"></div>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-left">
-            <h1 class="main-title">Esthar</h1>
-          </div>
-        </div>
+<div class="alert alert-warning" role="alert" ng-show="commentAlreadyVoted">
+  <strong>Sorry!</strong> But you've already voted for this comment.
+</div>
+
+<div class="panel panel-success fade-animation">
+  <div class="panel-heading text-center">
+    <h3 class="panel-title">
+      <a ng-show="post.link" href="{{post.link}}">
+        {{post.title}}
+      </a>
+
+      <span ng-hide="post.link">{{post.title}}</span>
+    </h3>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row">
+        <span class="label label-primary pull-right" title="Votes" style="margin-right: 15px;">
+          <span class="glyphicon glyphicon-star"></span>
+          {{post.upvotes}}
+        </span>
       </div>
 
-      <div class="alert alert-warning" role="alert" ng-show="commentAlreadyVoted">
-        <strong>Sorry!</strong> But you've already voted for this comment.
+      <div class="bs-text bs-text-post">
+        <span ng-bind-html="post.body"></span>
       </div>
 
-      <div class="panel panel-success fade-animation">
-        <div class="panel-heading text-center">
-          <h3 class="panel-title">
-            <a ng-show="post.link" href="{{post.link}}">
-              {{post.title}}
-            </a>
+      <p class="text-muted">
+        <em>
+          <span>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></span>
+          <span>at {{post.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}</span>
+        </em>
+      </p>
+    </li>
+  </ul>
 
-            <span ng-hide="post.link">{{post.title}}</span>
-          </h3>
-        </div>
+  <ul class="list-group fade-animation" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
+    <li class="list-group-item">
+      <span style="font-size: 20px; margin-left: 10px;">
+        {{comment.body}}
 
-        <ul class="list-group">
-          <li class="list-group-item">
-            <div class="row">
-              <span class="label label-primary pull-right" title="Votes" style="margin-right: 15px;">
-                <span class="glyphicon glyphicon-star"></span>
-                {{post.upvotes}}
-              </span>
-            </div>
+        <span class="text-muted small">
+          <em>
+            - by <a ng-href="#/users/{{comment.user.id}}">{{comment.user.username}}</a>
+            at {{comment.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}
+          </em>
+        </span>
+        <br>
 
-            <div class="bs-text bs-text-post">
-              <span ng-bind-html="post.body"></span>
-            </div>
+        <span class="small" style="margin-left: 10px;">
+          <span class="label label-success" title="Votes">
+            <span class="glyphicon glyphicon-star"></span>
+            {{comment.upvotes}}
+          </span>
+        </span>
 
-            <p class="text-muted">
-              <em>
-                <span>posted by <a ng-href="#/users/{{post.user.id}}">{{post.user.username}}</a></span>
-                <span>at {{post.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}</span>
-              </em>
+        <span class="btn-outline outline-success btn-sm pull-right" title="Vote for this comment"
+              ng-show="signedIn()"
+              ng-click="incrementUpvotes(comment)">
+          <span class="glyphicon glyphicon-star"></span>
+          <span>Vote</span>
+        </span>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<form name="form" role="form" class="fade-animation" style="margin-top: 30px;"
+      ng-submit="addComment()" ng-show="signedIn()" novalidate>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add a new comment</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="form-group" ng-class="{'has-error has-feedback':form.body.$invalid && form.body.$touched,
+      'has-success has-feedback': form.body.$valid}">
+
+        <input type="text" class="form-control" placeholder="Comment" ng-model="body" name="body" required="">
+
+        <div ng-show="form.$submitted || form.body.$touched || form.body.$dirty">
+          <div ng-show="form.body.$error.required">
+            <p class="help-block">
+              <span class="text-danger">Can't be blank</span>
             </p>
-          </li>
-        </ul>
-
-        <ul class="list-group fade-animation" ng-repeat="comment in post.comments | orderBy: '-upvotes'">
-          <li class="list-group-item">
-            <span style="font-size: 20px; margin-left: 10px;">
-              {{comment.body}}
-
-              <span class="text-muted small">
-                <em>
-                  - by <a ng-href="#/users/{{comment.user.id}}">{{comment.user.username}}</a>
-                  at {{comment.created_at | date : 'EEEE, MMMM d, y - HH:mm'}}
-                </em>
-              </span>
-              <br>
-
-              <span class="small" style="margin-left: 10px;">
-                <span class="label label-success" title="Votes">
-                  <span class="glyphicon glyphicon-star"></span>
-                  {{comment.upvotes}}
-                </span>
-              </span>
-
-              <span class="btn-outline outline-success btn-sm pull-right" title="Vote for this comment"
-                    ng-show="signedIn()"
-                    ng-click="incrementUpvotes(comment)">
-                <span class="glyphicon glyphicon-star"></span>
-                <span>Vote</span>
-              </span>
-            </span>
-          </li>
-        </ul>
-      </div>
-
-      <form name="form" role="form" class="fade-animation" style="margin-top: 30px;"
-            ng-submit="addComment()" ng-show="signedIn()" novalidate>
-
-        <div class="panel panel-success">
-          <div class="panel-heading">
-            <h3 class="panel-title">Add a new comment</h3>
-          </div>
-
-          <div class="panel-body">
-            <div class="form-group" ng-class="{'has-error has-feedback':form.body.$invalid && form.body.$touched,
-            'has-success has-feedback': form.body.$valid}">
-
-              <input type="text" class="form-control" placeholder="Comment" ng-model="body" name="body" required="">
-
-              <div ng-show="form.$submitted || form.body.$touched || form.body.$dirty">
-                <div ng-show="form.body.$error.required">
-                  <p class="help-block">
-                    <span class="text-danger">Can't be blank</span>
-                  </p>
-                </div>
-              </div>
-
-              <div ng-show="form.body.$valid">
-                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-              </div>
-
-              <div ng-show="form.body.$invalid && form.body.$touched">
-                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Post</button>
           </div>
         </div>
-      </form>
+
+        <div ng-show="form.body.$valid">
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+        </div>
+
+        <div ng-show="form.body.$invalid && form.body.$touched">
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" ng-disabled="form.$invalid">Post</button>
     </div>
   </div>
-</div>
+</form>
