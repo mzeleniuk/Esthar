@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     if post.votes.create(user_id: current_user.id).save
       post.increment!(:upvotes)
     else
-      return render json: {error: 'Already voted'}, status: 422
+      return render json: {error: 'Post is already voted'}, status: 422
     end
 
     respond_with post

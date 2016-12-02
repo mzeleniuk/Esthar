@@ -5,14 +5,16 @@ var Esthar = angular.module('Esthar', [
   'ngAnimate',
   'angular-medium-editor',
   'ngSanitize',
-  'truncate'
+  'truncate',
+  'toastr'
 ]);
 
 Esthar.config([
   '$stateProvider',
   '$urlRouterProvider',
+  'toastrConfig',
 
-  function ($stateProvider, $urlRouterProvider) {
+  function ($stateProvider, $urlRouterProvider, toastrConfig) {
     $stateProvider
       .state('home', {
         url: '/home',
@@ -70,5 +72,12 @@ Esthar.config([
       });
 
     $urlRouterProvider.otherwise('home');
+
+    angular.extend(toastrConfig, {
+      positionClass: 'toast-top-right',
+      allowHtml: false,
+      closeButton: true,
+      progressBar: true
+    });
   }
 ]);

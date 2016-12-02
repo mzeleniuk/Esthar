@@ -1,5 +1,5 @@
-Esthar.controller('MainCtrl', ['$scope', '$timeout', 'posts', 'Auth',
-  function ($scope, $timeout, posts, Auth) {
+Esthar.controller('MainCtrl', ['$scope', 'toastr', 'posts', 'Auth',
+  function ($scope, toastr, posts, Auth) {
     $scope.posts = posts.posts;
     $scope.signedIn = Auth.isAuthenticated;
 
@@ -24,11 +24,7 @@ Esthar.controller('MainCtrl', ['$scope', '$timeout', 'posts', 'Auth',
 
     $scope.incrementUpvotes = function (post) {
       posts.upvote(post).error(function () {
-        $scope.postAlreadyVoted = true;
-
-        $timeout(function () {
-          $scope.postAlreadyVoted = false
-        }, 3000);
+        toastr.warning("It seems you've already voted for this post.", 'Oops...');
       });
     };
   }

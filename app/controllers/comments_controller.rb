@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     if comment.votes.create(user_id: current_user.id).save
       comment.increment!(:upvotes)
     else
-      return render json: {error: 'Already voted'}, status: 422
+      return render json: {error: 'Comment is already voted'}, status: 422
     end
 
     respond_with post, comment

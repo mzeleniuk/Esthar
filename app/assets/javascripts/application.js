@@ -19,6 +19,7 @@
 //= require medium-editor/dist/js/medium-editor.min
 //= require angular-medium-editor/dist/angular-medium-editor.min
 //= require angular-truncate/src/truncate
+//= require angular-toastr/dist/angular-toastr.tpls.min
 //= require jquery/dist/jquery.min
 //= require bootstrap-sass/assets/javascripts/bootstrap.min
 //= require esthar.js
