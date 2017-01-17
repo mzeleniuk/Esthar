@@ -9,5 +9,9 @@ Esthar.factory('users', ['$http', function ($http) {
     });
   };
 
+  object.update = function (user) {
+    return $http.patch('/users/' + user.id + '.json', user);
+  };
+
   return object;
 }]);

@@ -10,42 +10,8 @@
       </div>
 
       <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
-        <table class="table">
-          <tbody>
-            <tr ng-show="user.first_name">
-              <td>First name:</td>
-              <td>{{user.first_name}}</td>
-            </tr>
-            <tr ng-show="user.last_name">
-              <td>Last name:</td>
-              <td>{{user.last_name}}</td>
-            </tr>
-            <tr>
-              <td>Username:</td>
-              <td>{{user.username}}</td>
-            </tr>
-            <tr ng-show="signedIn()">
-              <td>Email:</td>
-              <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
-            </tr>
-            <tr ng-show="user.date_of_birth">
-              <td>Date of birth:</td>
-              <td>{{user.date_of_birth}}</td>
-            </tr>
-            <tr ng-show="user.phone">
-              <td>Phone:</td>
-              <td>{{user.phone}}</td>
-            </tr>
-            <tr ng-show="user.website">
-              <td>Website:</td>
-              <td>{{user.website}}</td>
-            </tr>
-            <tr>
-              <td>Joined at:</td>
-              <td>{{user.created_at | date : 'EEEE, MMMM d, y'}}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div ng-if="!signedIn() || currentUser.id != user.id" ng-include="'users/showUser.html'"></div>
+        <div ng-if="signedIn() && currentUser.id == user.id" ng-include="'users/updateUser.html'"></div>
       </div>
     </div>
   </div>

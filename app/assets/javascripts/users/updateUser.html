@@ -1,0 +1,80 @@
+<div class="table-responsive">
+  <table class="table user-table">
+    <tbody>
+      <tr>
+        <td>First name:</td>
+        <td>
+          <i class="glyphicon glyphicon-pencil text-muted"></i>
+
+          <a href="#" editable-text="user.first_name" e-maxlength="50" onbeforesave="updateUser()">
+            {{user.first_name || 'Add your first name'}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Last name:</td>
+        <td>
+          <i class="glyphicon glyphicon-pencil text-muted"></i>
+
+          <a href="#" editable-text="user.last_name" e-maxlength="50" onbeforesave="updateUser()">
+            {{user.last_name || 'Add your last name'}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Username:</td>
+        <td>
+          <i class="glyphicon glyphicon-pencil text-muted"></i>
+
+          <a href="#" editable-text="user.username" e-required e-maxlength="15" onbeforesave="updateUser()">
+            {{user.username || 'Add your username'}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <i class="glyphicon glyphicon-pencil text-muted"></i>
+
+          <a href="#" editable-email="user.email" e-required onbeforesave="updateUser()">
+            {{user.email || 'Add your email'}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Date of birth:</td>
+        <td>
+          <i class="glyphicon glyphicon-pencil text-muted"></i>
+
+          <a href="#" editable-text="user.date_of_birth" e-placeholder="yyyy-mm-dd" onbeforesave="updateUser()">
+            {{user.date_of_birth || 'Add your date of birth'}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Phone:</td>
+        <td>
+          <i class="glyphicon glyphicon-pencil text-muted"></i>
+
+          <a href="#" editable-tel="user.phone" onbeforesave="updateUser()">
+            {{user.phone || 'Add your phone number'}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Website:</td>
+        <td>
+          <i class="glyphicon glyphicon-pencil text-muted"></i>
+
+          <a href="#" editable-url="user.website" onbeforesave="updateUser()">
+            {{user.website || 'Add your website'}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Joined at:</td>
+        <td>{{user.created_at | date : 'EEEE, MMMM d, y'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

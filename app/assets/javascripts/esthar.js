@@ -6,7 +6,8 @@ var Esthar = angular.module('Esthar', [
   'angular-medium-editor',
   'ngSanitize',
   'truncate',
-  'toastr'
+  'toastr',
+  'xeditable'
 ]);
 
 Esthar.config([
@@ -81,3 +82,7 @@ Esthar.config([
     });
   }
 ]);
+
+Esthar.run(function (editableOptions) {
+  editableOptions.theme = 'bs3';
+});

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :email, length: {maximum: 50},
             format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   validates :username, length: {maximum: 15}, uniqueness: {case_sensitive: false}
-  validates :password, length: {minimum: 6}
+  validates :password, length: {minimum: 6}, on: :create
   validates :first_name, :last_name, length: {maximum: 25}, allow_blank: true
   validates :phone, numericality: {only_integer: true}, length: {maximum: 20}, allow_blank: true
   validates :website, length: {maximum: 100}, allow_blank: true

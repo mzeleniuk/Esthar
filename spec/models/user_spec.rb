@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of(:username) }
   it { is_expected.to validate_length_of(:username).is_at_most(15).with_message('is too long (maximum is 15 characters)') }
   it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
-  it { is_expected.to validate_length_of(:password).is_at_least(6).with_message('is too short (minimum is 6 characters)') }
+  it { is_expected.to validate_length_of(:password).is_at_least(6).with_message('is too short (minimum is 6 characters)').on(:create) }
   it { is_expected.to validate_length_of(:first_name).is_at_most(25).with_message('is too long (maximum is 25 characters)') }
   it { is_expected.to validate_length_of(:last_name).is_at_most(25).with_message('is too long (maximum is 25 characters)') }
   it { is_expected.to validate_numericality_of(:phone).only_integer }
