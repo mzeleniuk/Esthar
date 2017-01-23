@@ -23,6 +23,6 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_length_of(:password).is_at_least(6).with_message('is too short (minimum is 6 characters)').on(:create) }
   it { is_expected.to validate_length_of(:first_name).is_at_most(25).with_message('is too long (maximum is 25 characters)') }
   it { is_expected.to validate_length_of(:last_name).is_at_most(25).with_message('is too long (maximum is 25 characters)') }
-  it { is_expected.to validate_numericality_of(:phone).only_integer }
+  it { is_expected.to validate_length_of(:phone).is_at_most(20).with_message('is too long (maximum is 20 characters)') }
   it { is_expected.to validate_length_of(:website).is_at_most(100).with_message('is too long (maximum is 100 characters)') }
 end

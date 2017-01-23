@@ -7,7 +7,8 @@ var Esthar = angular.module('Esthar', [
   'ngSanitize',
   'truncate',
   'toastr',
-  'xeditable'
+  'xeditable',
+  'ui.mask'
 ]);
 
 Esthar.config([

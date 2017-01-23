@@ -19,7 +19,7 @@
       </tr>
       <tr ng-show="user.date_of_birth">
         <td>Date of birth:</td>
-        <td>{{user.date_of_birth}}</td>
+        <td>{{user.date_of_birth | date : 'EEEE, MMMM d, y'}}</td>
       </tr>
       <tr ng-show="user.phone">
         <td>Phone:</td>

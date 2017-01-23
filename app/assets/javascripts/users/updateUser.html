@@ -46,8 +46,9 @@
         <td>
           <i class="glyphicon glyphicon-pencil text-muted"></i>
 
-          <a href="#" editable-text="user.date_of_birth" e-placeholder="yyyy-mm-dd" onbeforesave="updateUser()">
-            {{user.date_of_birth || 'Add your date of birth'}}
+          <a href="#" editable-text="user.date_of_birth" e-ui-mask="9999-99-99" e-model-view-value="true"
+             e-ui-mask-placeholder="yyyy-MM-dd" onbeforesave="updateUser()">
+              {{(user.date_of_birth | date : 'EEEE, MMMM d, y') || 'Add your date of birth'}}
           </a>
         </td>
       </tr>
@@ -56,8 +57,9 @@
         <td>
           <i class="glyphicon glyphicon-pencil text-muted"></i>
 
-          <a href="#" editable-tel="user.phone" onbeforesave="updateUser()">
-            {{user.phone || 'Add your phone number'}}
+          <a href="#" editable-text="user.phone" e-ui-mask="(999) 999 9999" e-model-view-value="true"
+             onbeforesave="updateUser()">
+              {{user.phone || 'Add your phone number'}}
           </a>
         </td>
       </tr>
