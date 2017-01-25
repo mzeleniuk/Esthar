@@ -84,6 +84,8 @@ Esthar.config([
   }
 ]);
 
-Esthar.run(function (editableOptions) {
-  editableOptions.theme = 'bs3';
-});
+Esthar.run(['editableOptions',
+  function (editableOptions) {
+    editableOptions.theme = 'bs3';
+  }
+]);

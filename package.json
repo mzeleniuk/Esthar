@@ -1,6 +1,6 @@
 {
   "name": "esthar",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Social news aggregation, web content rating and discussion website",
   "main": "esthar.js",
   "scripts": {
@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/mzelenyuk/Esthar#readme",
   "dependencies": {
-    "bower": "^1.8.0"
+    "bower": "1.8.0"
   }
 }
