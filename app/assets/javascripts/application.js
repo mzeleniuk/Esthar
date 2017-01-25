@@ -21,6 +21,7 @@
 //= require angular-toastr/dist/angular-toastr.tpls.min
 //= require angular-xeditable/dist/js/xeditable.min
 //= require angular-ui-mask/dist/mask.min
+//= require PACE/pace.min
 //= require jquery/dist/jquery.min
 //= require bootstrap-sass/assets/javascripts/bootstrap.min
 //= require esthar.js
