@@ -61,9 +61,6 @@ group :test do
   # Code coverage analysis tool for Ruby
   gem 'simplecov', require: false
 
-  # Show code coverage in Code Climate
-  gem 'codeclimate-test-reporter', require: nil
-
   # Collection of testing matchers extracted from Shoulda
   gem 'shoulda-matchers', '~> 3.1'
 end
